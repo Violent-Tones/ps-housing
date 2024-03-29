@@ -48,7 +48,7 @@ Config.ConsumeRaidItem = false          -- Whether or not to consume the raid it
 
 Config.RealtorJobName = "realestate" -- Set your Real Estate job here
 
--- If you are utilizing qb-banking and wish for the funds to be deposited directly into the Realestate bank account, set this value to true. 
+-- If you are utilizing qb-banking and wish for the funds to be deposited directly into the Realestate bank account, set this value to true.
 -- In case you are using an alternative Boss Menu, replace the qb-banking export with the appropriate script export or event.
 Config.QBManagement = false
 
@@ -66,6 +66,20 @@ Config.StartingApartment = true
 
 --- With this enabled, the customizer will open when starting apartment is false.
 Config.ShowCustomizerWhenNoStartingApartment = true
+
+Config.StarterApartments = {
+    ['Fantastic Plaza'] = {
+        label = 'Fantastic Plaza',
+        door = { x = 291.517, y = -1078.674, z = 29.405, h = 270.75, length = 1, width = 2 },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1143566042153631784/1143566742589800629/SgK60IR.jpg",
+                label = "Outside",
+            },
+        },
+        shell = "Apartment Unfurnished",
+    },
+}
 
 Config.Apartments = {
     ["Integrity Way"] = {

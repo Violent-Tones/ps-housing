@@ -27,7 +27,7 @@ function InitialiseProperties(properties)
 	if not properties then
     	properties = lib.callback.await('ps-housing:server:requestProperties')
 	end
-	
+
     for k, v in pairs(properties) do
         createProperty(v.propertyData)
     end
@@ -58,7 +58,7 @@ RegisterNetEvent('ps-housing:client:setupSpawnUI', function(cData)
         -- TriggerEvent("apartments:client:SetHomeBlip", result.type)
     else
         if Config.StartingApartment then
-            TriggerEvent('qb-spawn:client:setupSpawns', cData, true, Config.Apartments)
+            TriggerEvent('qb-spawn:client:setupSpawns', cData, true, Config.StarterApartments)
             TriggerEvent('qb-spawn:client:openUI', true)
         else
             TriggerEvent('qb-spawn:client:setupSpawns', cData, false, nil)
