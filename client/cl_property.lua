@@ -211,6 +211,7 @@ function Property:EnterShell()
 
     self:GiveMenus()
 
+    TriggerEvent('violent-hygiene:client:CreateApartmentShower', GetEntityCoords(self.shellObj) ) --, self.propertyData.apartment)
     Wait(250)
     DoScreenFadeIn(250)
 end
