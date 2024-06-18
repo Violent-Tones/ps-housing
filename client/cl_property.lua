@@ -219,6 +219,10 @@ end
 function Property:LeaveShell()
     if not self.inProperty then return end
 
+    -- @TODO: Check if there's a better way to do this without being in here
+    -- Needed to progress tutorial
+    TriggerEvent('violent-tutorial:client:ExitApartment')
+
     DoScreenFadeOut(250)
     TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_open", 0.25)
     Wait(250)
@@ -459,7 +463,7 @@ end
 
 function Property:LoadFurnitures()
     self.propertyData.furnitures = lib.callback.await('ps-housing:cb:getFurnitures', source, self.property_id) or {}
-    
+
     for i = 1, #self.propertyData.furnitures do
         local furniture = self.propertyData.furnitures[i]
         self:LoadFurniture(furniture)
@@ -468,7 +472,7 @@ end
 
 function Property:UnloadFurniture(furniture, index)
     local entity = furniture?.entity
-    if not entity then 
+    if not entity then
         for i = 1, #self.furnitureObjs do
             if self.furnitureObjs[i]?.id and furniture?.id and self.furnitureObjs[i].id == furniture.id then
                 entity = self.furnitureObjs[i]?.entity
@@ -592,7 +596,7 @@ local function findFurnitureDifference(new, old)
     return added, removed, edited
 end
 
--- I think this whole furniture sync is a bit shit, but I cbf thinking 
+-- I think this whole furniture sync is a bit shit, but I cbf thinking
 function Property:UpdateFurnitures(newFurnitures)
     if not self.inProperty then return end
 
@@ -608,7 +612,7 @@ function Property:UpdateFurnitures(newFurnitures)
         local furniture = removed[i]
         self:UnloadFurniture(furniture)
     end
-    
+
     for i = 1, #edited do
         local furniture = edited[i]
         self:UnloadFurniture(furniture)
